@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="startView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dndm.init.screen.Controller">
+   <children>
+      <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="572.0" spacing="20.0">
+         <children>
+            <Button fx:id="newCampaignBtn" mnemonicParsing="false" onAction="#onInitNewCampaign" prefHeight="240.0" prefWidth="240.0" styleClass="new_campaign_button" stylesheets="@styles/start-view.css" />
+            <Button fx:id="loadCampeign" mnemonicParsing="false" onAction="#onLoadCampaign" prefHeight="240.0" prefWidth="240.0" styleClass="load_campaign_button" stylesheets="@styles/start-view.css" />
+         </children>
+      </HBox>
+   </children>
+</Pane>

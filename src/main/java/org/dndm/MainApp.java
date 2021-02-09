@@ -5,12 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.dndm.configuration.DataSource;
 import org.dndm.configuration.DataUtils;
-
-import java.util.Objects;
+import org.dndm.common.BaseController;
+import org.dndm.common.SceneManager;
 
 public class MainApp extends Application {
 
@@ -25,17 +25,15 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("dndm/sample.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dndm/start_view/initialScreenView.fxml"));
+        Parent root = loader.load();
 
-        okButton = new Button();
-        okButton.setText("OK");
+        BaseController controller = loader.getController();
+        controller.setSceneManager(new SceneManager(primaryStage));
 
-        StackPane layout = new StackPane();
-        layout.getChildren().add(okButton);
-
-
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Start Campaign");
+        primaryStage.getIcons().add(new Image("dndm/common/logo.png"));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
 
