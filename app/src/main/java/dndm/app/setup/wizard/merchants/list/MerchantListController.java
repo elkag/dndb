@@ -133,6 +133,10 @@ public class MerchantListController extends BaseController {
         merchantsListView.refresh();
     }
 
-    public void nextStepHandler(ActionEvent actionEvent) {
+    public void nextStepHandler() {
+    }
+
+    public void merchantEditHandler() {
+        editMerchant();
     }
 }
