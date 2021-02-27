@@ -6,92 +6,81 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dndm.app.setup.wizard.merchants.list.MerchantListController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dndm.app.setup.wizard.merchants.list.MerchantListController">
    <fx:include fx:id="menuBar" source="../../shared/header.fxml" />
-   <VBox layoutX="20.0" layoutY="40.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0"
-         AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="36.0">
+   <VBox layoutX="20.0" layoutY="40.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="36.0">
       <HBox spacing="10.0" VBox.vgrow="ALWAYS">
-         <ListView fx:id="merchantsListView" HBox.hgrow="ALWAYS"/>
-         <VBox fx:id="vbox" alignment="TOP_RIGHT" layoutX="627.0" layoutY="60.0" prefHeight="550.0" prefWidth="200.0"
-               spacing="10.0" HBox.hgrow="NEVER">
-            <Label fx:id="editMerchantLabel" contentDisplay="TOP" style="-fx-pref-width: 100%;" styleClass="tree-pane"
-                   stylesheets="@../styles/tree-styles.css" text="Edit Settlement">
+         <ListView fx:id="merchantsListView" HBox.hgrow="ALWAYS" />
+         <VBox fx:id="vbox" alignment="TOP_RIGHT" layoutX="627.0" layoutY="60.0" prefHeight="550.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="NEVER">
+            <Label fx:id="editMerchantLabel" contentDisplay="TOP" style="-fx-pref-width: 100%;" styleClass="tree-pane" stylesheets="@../styles/tree-styles.css" text="Edit Settlement">
                <font>
-                  <Font name="System Bold" size="12.0"/>
+                  <Font name="System Bold" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets/>
+                  <Insets />
                </VBox.margin>
                <opaqueInsets>
-                  <Insets/>
+                  <Insets />
                </opaqueInsets>
             </Label>
-            <Line endX="200.0"/>
+            <Line endX="200.0" />
             <AnchorPane prefHeight="174.0" prefWidth="201.0">
 
-               <ChoiceBox fx:id="merchantTypeChoiceBox" layoutX="10.0" layoutY="100.0" onAction="#editMerchant"
-                          prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="10.0"
-                          AnchorPane.rightAnchor="10.0"/>
-               <Label layoutX="10.0" layoutY="13.0" text="Name"/>
-               <Label layoutX="11.0" layoutY="80.0" text="Size"/>
-               <TextField fx:id="merchantName" layoutX="10.0" layoutY="33.0" AnchorPane.leftAnchor="10.0"
-                          AnchorPane.rightAnchor="10.0"/>
-               <Button layoutX="12.0" layoutY="147.0" mnemonicParsing="false" text="Save" textFill="#3eae3d">
+               <ChoiceBox fx:id="merchantTypeChoiceBox" layoutX="10.0" layoutY="100.0" prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+               <Label layoutX="10.0" layoutY="13.0" text="Name" />
+               <Label layoutX="11.0" layoutY="80.0" text="Size" />
+               <TextField fx:id="merchantName" layoutX="10.0" layoutY="33.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+               <Button fx:id="merchantEditButton" layoutX="12.0" layoutY="147.0" mnemonicParsing="false" onAction="#merchantEditHandler" text="Save" textFill="#3eae3d">
                   <font>
-                     <Font name="System Bold" size="12.0"/>
+                     <Font name="System Bold" size="12.0" />
                   </font>
                </Button>
                <VBox.margin>
-                  <Insets bottom="20.0"/>
+                  <Insets bottom="20.0" />
                </VBox.margin>
             </AnchorPane>
-            <Label fx:id="addMerchantLabel" style="-fx-pref-width: 100%;" styleClass="tree-pane"
-                   stylesheets="@../styles/tree-styles.css" text="Add Merchant">
+            <Label fx:id="addMerchantLabel" style="-fx-pref-width: 100%;" styleClass="tree-pane" stylesheets="@../styles/tree-styles.css" text="Add Merchant">
                <font>
-                  <Font name="System Bold" size="12.0"/>
+                  <Font name="System Bold" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets/>
+                  <Insets />
                </VBox.margin>
                <opaqueInsets>
-                  <Insets/>
+                  <Insets />
                </opaqueInsets>
             </Label>
-            <Line endX="200.0"/>
+            <Line endX="200.0" />
             <AnchorPane VBox.vgrow="ALWAYS">
-               <TextField fx:id="newMerchantName" layoutX="9.0" layoutY="31.0" prefHeight="25.0" prefWidth="190.0"
-                          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-               <ChoiceBox fx:id="newMerchantTypeChoiceBox" layoutX="11.0" layoutY="94.0" prefHeight="25.0"
-                          prefWidth="190.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-               <Label layoutX="10.0" layoutY="11.0" text="Name" AnchorPane.topAnchor="5.0"/>
-               <Label layoutX="11.0" layoutY="75.0" text="Size"/>
-               <Button fx:id="addButton" layoutX="12.0" layoutY="141.0" mnemonicParsing="false" onAction="#addMerchant"
-                       prefHeight="25.0" prefWidth="50.0" text="Add" textFill="#3eae3d">
+               <TextField fx:id="newMerchantName" layoutX="9.0" layoutY="31.0" prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+               <ChoiceBox fx:id="newMerchantTypeChoiceBox" layoutX="11.0" layoutY="94.0" prefHeight="25.0" prefWidth="190.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+               <Label layoutX="10.0" layoutY="11.0" text="Name" AnchorPane.topAnchor="5.0" />
+               <Label layoutX="11.0" layoutY="75.0" text="Size" />
+               <Button fx:id="addButton" layoutX="12.0" layoutY="141.0" mnemonicParsing="false" onAction="#addMerchant" prefHeight="25.0" prefWidth="50.0" text="Add" textFill="#3eae3d">
                   <font>
-                     <Font name="System Bold" size="12.0"/>
+                     <Font name="System Bold" size="12.0" />
                   </font>
                </Button>
             </AnchorPane>
             <padding>
-               <Insets top="10.0"/>
+               <Insets top="10.0" />
             </padding>
             <opaqueInsets>
-               <Insets bottom="30.0"/>
+               <Insets bottom="30.0" />
             </opaqueInsets>
          </VBox>
       </HBox>
       <HBox alignment="BOTTOM_LEFT">
-         <Button mnemonicParsing="false" onAction="#BackButtonHandler" prefHeight="25.0" prefWidth="183.0"
-                 text="&lt;- Back to settlements tree" textAlignment="JUSTIFY" textOverrun="CLIP">
+         <Button mnemonicParsing="false" onAction="#BackButtonHandler" prefHeight="25.0" prefWidth="183.0" text="&lt;- Back to settlements tree" textAlignment="JUSTIFY" textOverrun="CLIP">
             <font>
-               <Font name="System Bold" size="12.0"/>
+               <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Region HBox.hgrow="ALWAYS"/>
-         <Button mnemonicParsing="false" onAction="#nextStepHandler" prefHeight="25.0" prefWidth="91.0"
-                 text="Next step &gt;">
+         <Region HBox.hgrow="ALWAYS" />
+         <Button mnemonicParsing="false" onAction="#nextStepHandler" prefHeight="25.0" prefWidth="91.0" text="Next step &gt;">
             <font>
-               <Font name="System Bold" size="12.0"/>
+               <Font name="System Bold" size="12.0" />
             </font>
          </Button>
       </HBox>
