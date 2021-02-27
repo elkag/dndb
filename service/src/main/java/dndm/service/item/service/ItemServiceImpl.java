@@ -22,7 +22,7 @@ public class ItemServiceImpl implements Service<ItemDto> {
         List<Item> items = repository.getAll(Item.class);
         if(items == null) return List.of();
         return items.stream()
-                .map(e -> ItemTypeMapper.Instance().mapToModel(e))
+                .map(e -> ItemMapper.Instance().mapToModel(e))
                 .collect(Collectors.toList());
     }
 }

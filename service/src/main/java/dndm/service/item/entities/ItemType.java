@@ -6,8 +6,20 @@ import dndm.utilities.db.anotations.Table;
 @Table("item_types")
 public class ItemType {
 
-    @Column("type")
+    @Column("name")
     private String type;
+
+    @Column("image")
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public ItemType setImage(String image) {
+        this.image = image;
+        return this;
+    }
 
     public String getType() {
         return type;

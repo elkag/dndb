@@ -6,7 +6,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dndm.app.setup.wizard.merchants.list.MerchantListController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dndm.app.setup.wizard.merchants.list.MerchantListController">
    <fx:include fx:id="menuBar" source="../../shared/header.fxml" />
    <VBox layoutX="20.0" layoutY="40.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0"
          AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="36.0">

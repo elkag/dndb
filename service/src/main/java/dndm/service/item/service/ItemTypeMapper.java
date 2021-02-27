@@ -2,21 +2,22 @@ package dndm.service.item.service;
 
 import dndm.service.common.Mapper;
 import dndm.service.exposed.models.ItemDto;
+import dndm.service.exposed.models.ItemTypeDto;
 import dndm.service.item.entities.Item;
 import dndm.service.item.entities.ItemType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ItemTypeMapper implements Mapper<Item, ItemDto> {
+public class ItemTypeMapper implements Mapper<ItemType, ItemTypeDto> {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private volatile static Mapper<Item, ItemDto> instance = new ItemTypeMapper();
+    private volatile static Mapper<ItemType, ItemTypeDto> instance = new ItemTypeMapper();
 
     private ItemTypeMapper() {
     }
 
-    public static synchronized Mapper<Item, ItemDto> Instance() {
+    public static synchronized Mapper<ItemType, ItemTypeDto> Instance() {
         if(instance == null) {
             instance = new ItemTypeMapper();
         }
@@ -24,12 +25,16 @@ public class ItemTypeMapper implements Mapper<Item, ItemDto> {
     }
 
     @Override
-    public ItemDto mapToModel(final Item entity) {
-        return new ItemDto();
+    public ItemTypeDto mapToModel(final ItemType entity) {
+        return new ItemTypeDto()
+                .setType(entity.getType())
+                .setImage(entity.getImage());
     }
 
     @Override
-    public Item mapToEntity(ItemDto model) {
-        return new Item();
+    public ItemType mapToEntity(ItemTypeDto model) {
+        return new ItemType()
+                .setType(model.getType())
+                .setImage(model.getImage());
     }
 }

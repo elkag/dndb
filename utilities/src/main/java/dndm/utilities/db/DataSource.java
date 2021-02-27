@@ -14,7 +14,7 @@ public class DataSource {
 
         //config = new HikariConfig("/datasource.properties");
         config = new HikariConfig();
-        config.setJdbcUrl("jdbc:h2:file:~/dndb/resources/db1;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO;INIT=runscript from 'classpath:/db.sql'");
+        config.setJdbcUrl("jdbc:h2:file:~/dndb/%AppData%/resources/db;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO;INIT=runscript from 'classpath:/db.sql'");
         config.setUsername(null);
         config.setPassword(null);
         config.addDataSourceProperty("prepStmtCacheSize", "250");

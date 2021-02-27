@@ -1,7 +1,6 @@
 package dndm.app.setup.wizard.merchants.merchant;
 
 import dndm.app.base.BaseController;
-import dndm.app.setup.wizard.data.SettlementsData;
 import dndm.app.setup.wizard.merchants.models.Merchant;
 import dndm.app.setup.wizard.settlements.models.SettlementModel;
 import javafx.beans.binding.Bindings;
@@ -10,9 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.Function;
 
 public class MerchantController extends BaseController {
     public ImageView avatar;

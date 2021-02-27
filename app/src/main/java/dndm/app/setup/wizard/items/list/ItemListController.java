@@ -6,6 +6,7 @@ import dndm.app.base.ViewsConfig;
 import dndm.app.setup.wizard.data.SettlementsData;
 import dndm.app.setup.wizard.items.models.Item;
 import dndm.app.setup.wizard.merchants.models.MerchantModel;
+import dndm.service.exposed.api.ItemServiceProvider;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +31,6 @@ public class ItemListController extends BaseController {
 
     public ItemListController(SceneManager sceneManager, MerchantModel merchantModel, SettlementsData data) {
         super(sceneManager);
-        //this.merchantModel = data.getSettlements().stream().filter(settlement::equals).findAny().get();
     }
     public ItemListController(){
 

@@ -1,9 +1,9 @@
 package dndm.service.item.entities;
 
-import dndm.service.exposed.models.ItemTypeDto;
 import dndm.service.merchant.entities.MerchantType;
 import dndm.service.settlement.entities.SettlementType;
 import dndm.utilities.db.anotations.Column;
+import dndm.utilities.db.anotations.JoinColumn;
 import dndm.utilities.db.anotations.Table;
 
 @Table("items")
@@ -15,8 +15,10 @@ public class Item {
     private Integer cost;
     @Column("weight")
     private Integer weight;
-    @Column("itemtype")
-    private ItemTypeDto itemType;
+
+    @JoinColumn(name = "itemtype", table = "item_types")
+    private ItemType itemType;
+
     @Column("description")
     private String description;
     @Column("damagetype")
@@ -33,9 +35,11 @@ public class Item {
     private Integer potionType;
     @Column("portionvalue")
     private Integer portionValue;
-    @Column("settlementtype")
+
+    @JoinColumn(name = "settlementsize", table = "settlement_types")
     private SettlementType settlementType;
-    @Column("merchanttype")
+
+    @JoinColumn(name = "merchanttype", table = "merchant_types")
     private MerchantType merchantType;
 
     public String getName() {
@@ -62,11 +66,11 @@ public class Item {
         this.weight = weight;
     }
 
-    public ItemTypeDto getItemType() {
+    public ItemType getItemType() {
         return itemType;
     }
 
-    public void setItemType(ItemTypeDto itemType) {
+    public void setItemType(ItemType itemType) {
         this.itemType = itemType;
     }
 

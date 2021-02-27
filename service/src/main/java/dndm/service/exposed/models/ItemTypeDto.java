@@ -2,6 +2,16 @@ package dndm.service.exposed.models;
 
 public class ItemTypeDto {
     private String type;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public ItemTypeDto setImage(String image) {
+        this.image = image;
+        return this;
+    }
 
     public String getType() {
         return type;

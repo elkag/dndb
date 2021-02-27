@@ -1,6 +1,7 @@
 package dndm.utilities.db;
 
 import dndm.utilities.db.anotations.Column;
+import dndm.utilities.db.anotations.JoinColumn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,18 +44,18 @@ public class DataUtils  {
                 T dto = clazz.getConstructor().newInstance();
 
                 for(Field field: fields) {
-                    Column col = field.getAnnotation(Column.class);
-                    if(col!=null) {
+                    if(field.isAnnotationPresent(Column.class)) {
+                        Column col = field.getAnnotation(Column.class);
                         String name = col.value();
-                        try{
-                            String value = rs.getString(name);
-
+                        String value = rs.getString(name);
+                        if(value != null) {
                             field.set(dto, field.getType().getConstructor(String.class).newInstance(value));
-
-                            System.out.println(field);
-                        } catch (Exception e) {
-                            e.printStackTrace();
                         }
+
+                    } else if(field.isAnnotationPresent(JoinColumn.class)) {
+                        JoinColumn joinCol = field.getAnnotation(JoinColumn.class);
+                        Object obj = fetchEntityById(connection, field, rs.getString(joinCol.name()));
+                        field.set(dto, obj);
                     }
                 }
 
@@ -82,6 +83,37 @@ public class DataUtils  {
             }
         }
         return result;
+    }
+
+    private static Object fetchEntityById(Connection connection, Field parentField, String id) throws SQLException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        JoinColumn joinCol = parentField.getAnnotation(JoinColumn.class);
+        String table = joinCol.table();
+
+        PreparedStatement pst = connection.prepareStatement("Select * from " + table + " where id=" + id);
+        ResultSet rs = pst.executeQuery();
+
+        if(rs.next()){
+            Class<?> clazz = parentField.getType();
+            Object childdto = clazz.getConstructor().newInstance();
+
+            Field[] fields = clazz.getDeclaredFields();
+
+            for(Field field: fields) {
+                if(field.isAnnotationPresent(Column.class)){
+                    Column col = field.getAnnotation(Column.class);
+                    field.setAccessible(true);
+                    String value = rs.getString(col.value());
+                    if(value != null) {
+                        field.set(childdto, field.getType().getConstructor(String.class).newInstance(value));
+                    }
+                } else if(field.isAnnotationPresent(JoinColumn.class)) {
+                    fetchEntityById(connection, field, rs.getString(joinCol.name()));
+                }
+
+            }
+            return childdto;
+        }
+        return null;
     }
 
     //DB Execute Update (For Update/Insert/Delete) Operation
