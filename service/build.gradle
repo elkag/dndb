@@ -1,0 +1,13 @@
+plugins {
+    id 'dndm.java-library-conventions'
+}
+
+dependencies {
+    api project(':utilities')
+}
+
+java {
+    modularity.inferModulePath = true
+}
+
+

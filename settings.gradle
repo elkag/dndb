@@ -8,10 +8,5 @@
  */
 
 rootProject.name = 'dndm-project'
-include('app', 'utilities', 'dataprovider')
-include 'dataprovider'
-include 'services'
-include 'services'
-include 'services:dataprovider'
-findProject(':services:dataprovider')?.name = 'dataprovider'
+include('app', 'utilities', 'service')
 

@@ -1,0 +1,51 @@
+.tree-cell {
+    -fx-indent: 60;
+}
+.tree-cell:sub-tree-item {
+    -fx-padding: 0.25em;
+}
+.tree-cell:filled:selected{
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000 ;
+    -fx-font-weight: bold ;
+}
+
+.tree-view {
+    -fx-pref-width: 100%;
+}
+
+.tree-pane {
+    -fx-min-width: 100%;
+}
+
+.red-pane {
+    -fx-pref-width: 100%;
+}
+
+/*
+.tree-cell:focused {
+    -fx-focus-color: transparent;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+.tree-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #993300;
+}
+.tree-view .tree-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffcc00;
+    -fx-font-size: 16;
+}
+.tree-view .tree-cell:selected {
+    -fx-font-weight: bold;
+    -fx-background-color: #993300;
+}
+
+.tree-view .tree-cell:filled:hover {
+    -fx-background-color: #5e1f00;
+}*/
+
+.tree-view .tree-cell > .tree-disclosure-node > .arrow  {
+    -fx-background-color: red;
+}

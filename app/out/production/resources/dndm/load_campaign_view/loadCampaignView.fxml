@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:merchantController="dndm.app.load.campaign.Controller">
+   <Button layoutX="33.0" layoutY="543.0" mnemonicParsing="false" onAction="#onBack" text="&lt; Back to start screen" />
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="220.0" opacity="0.26" prefHeight="80.0" prefWidth="346.0" text="LOADING ...">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+</Pane>

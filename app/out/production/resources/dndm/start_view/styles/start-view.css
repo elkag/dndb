@@ -1,0 +1,16 @@
+.new_campaign_button {
+    -fx-background-image: url("../images/new_campaign_button_bg.jpg");
+    -fx-opacity: 1;
+}
+
+.load_campaign_button {
+    -fx-background-image: url("../images/load_campaign_button_bg.jpg");
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+}
+
+.button:pressed {
+    -fx-opacity: 1;
+}

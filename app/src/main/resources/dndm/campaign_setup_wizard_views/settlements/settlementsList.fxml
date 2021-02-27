@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dndm.app.setup.wizard.settlements.list.SettlementsListController">
+   <fx:include fx:id="menuBar" source="../../shared/header.fxml" />
+   <ListView fx:id="list" layoutX="14.0" layoutY="49.0" prefHeight="478.0" prefWidth="574.0" />
+   <Button layoutX="14.0" layoutY="559.0" mnemonicParsing="false" onAction="#BackButtonHandler" prefHeight="25.0" prefWidth="183.0" text="&lt;- Back to settlements tree" textAlignment="JUSTIFY" textOverrun="CLIP">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Button>
+</AnchorPane>

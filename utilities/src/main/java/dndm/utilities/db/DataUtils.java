@@ -48,7 +48,10 @@ public class DataUtils  {
                         String name = col.value();
                         try{
                             String value = rs.getString(name);
+
                             field.set(dto, field.getType().getConstructor(String.class).newInstance(value));
+
+                            System.out.println(field);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

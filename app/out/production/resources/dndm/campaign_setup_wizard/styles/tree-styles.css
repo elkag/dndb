@@ -1,0 +1,11 @@
+.tree-cell {
+    -fx-indent: 60;
+}
+.tree-cell:sub-tree-item {
+    -fx-padding: 0.25em ;
+}
+.tree-cell:filled:selected{
+    -fx-background-color: #ffffff; // Unfocused color
+    -fx-text-fill: #000000 ;
+    -fx-font-weight: bold ;
+}

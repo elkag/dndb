@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:merchantController="dndm.app.setup.wizard.settlements.tree.Controller">
+   <AnchorPane layoutX="618.0" layoutY="31.0" prefHeight="51.0" prefWidth="149.0">
+      <TextField fx:id="settlementName" layoutY="17.0" />
+      <ChoiceBox fx:id="settlementSizeChoiceBox" layoutY="87.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label text="Name" />
+      <Label layoutY="68.0" text="Size" />
+      <Button layoutX="100.0" layoutY="149.0" mnemonicParsing="false" onAction="#addSettlement" text="Ready" />
+   </AnchorPane>
+      <TreeView fx:id="settlementsTree" prefHeight="1000.0" prefWidth="600.0" stylesheets="@../styles/tree-styles.css">
+         <styleClass>
+            <String fx:value="tree-cell"/>
+            <String fx:value="tree-cell"/>
+         </styleClass>
+      </TreeView>
+</Pane>

@@ -1,39 +1,46 @@
 package dndm.app;
 
-import dndm.app.common.BaseController;
-import dndm.app.common.SceneManager;
+import dndm.app.base.SceneManager;
+import dndm.app.base.ViewsConfig;
+import dndm.app.base.injection.DependencyInjection;
+import dndm.app.initial.screen.Controller;
+import dndm.app.setup.wizard.data.SettlementsData;
+import dndm.app.setup.wizard.settlements.models.SettlementModel;
+import dndm.app.setup.wizard.settlements.tree.SettlementsController;
 import dndm.utilities.db.DataSource;
 import dndm.utilities.db.DataUtils;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.function.Function;
 
 public class App extends Application {
 
-    private Button okButton;
+    public static Set<SettlementModel> settlements = new HashSet<>();
+    public static Stage primaryStage;
 
     @Override
     public void init() throws Exception {
-        //String stmt
         DataUtils.dbConnect();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        SceneManager sceneManager = new SceneManager(primaryStage);
+        SettlementsData settlementsData = new SettlementsData();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dndm/start_view/initialScreenView.fxml"));
-        Parent root = loader.load();
+        setUpDependencyInjector(sceneManager, settlementsData);
 
-        BaseController controller = loader.getController();
-        controller.setSceneManager(new SceneManager(primaryStage));
-
+        Parent root = (Parent) DependencyInjection.load(ViewsConfig.INITIAL_SCREEN.getUrl());
         primaryStage.setTitle("Start Campaign");
-        primaryStage.getIcons().add(new Image("dndm/common/logo.png"));
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene( root, 600, 400));
         primaryStage.show();
     }
 
@@ -45,5 +52,49 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void setUpDependencyInjector(SceneManager sceneManager, SettlementsData settlementsData) {
+        //set bundle
+        DependencyInjection.setBundle(ResourceBundle.getBundle("greetings", Locale.UK));
+
+        Callback<Class<?>, Object> initialScreenControllerFactory = param -> {
+            return new Controller(sceneManager);
+        };
+        //save the factory in the injector
+        DependencyInjection.addInjectionMethod(
+                Controller.class, initialScreenControllerFactory
+        );
+
+
+
+
+        Callback<Class<?>, Object> settlementTreeControllerFactory = param -> {
+            Function<String, String> data = (a) -> a.concat("_bla");
+            return new SettlementsController(sceneManager, settlementsData, data);
+        };
+
+        //save the factory in the injector
+        DependencyInjection.addInjectionMethod(
+                SettlementsController.class, settlementTreeControllerFactory
+        );
+
+        Callback<Class<?>, Object> headerControllerFactory = param -> {
+            return new dndm.app.common.header.Controller(sceneManager);
+        };
+
+        //save the factory in the injector
+        DependencyInjection.addInjectionMethod(
+                dndm.app.common.header.Controller.class, headerControllerFactory
+        );
+
+
+        Callback<Class<?>, Object> loadCampaignControllerFactory = param -> {
+            return new dndm.app.load.campaign.Controller(sceneManager);
+        };
+        //save the factory in the injector
+        DependencyInjection.addInjectionMethod(
+                dndm.app.load.campaign.Controller.class, loadCampaignControllerFactory
+        );
     }
 }
