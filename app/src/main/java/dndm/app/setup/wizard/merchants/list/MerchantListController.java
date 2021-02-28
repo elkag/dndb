@@ -4,14 +4,12 @@ import dndm.app.base.BaseController;
 import dndm.app.base.SceneManager;
 import dndm.app.base.ViewsConfig;
 import dndm.app.base.injection.DependencyInjection;
-import dndm.app.setup.wizard.data.SettlementsData;
 import dndm.app.setup.wizard.merchants.merchant.MerchantController;
 import dndm.app.setup.wizard.merchants.models.Merchant;
 import dndm.app.setup.wizard.settlements.models.SettlementModel;
 import dndm.service.exposed.api.MerchantServiceProvider;
 import dndm.service.exposed.models.MerchantTypeDto;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -33,7 +31,6 @@ public class MerchantListController extends BaseController {
     public ChoiceBox<MerchantTypeDto> merchantTypeChoiceBox;
     public TextField merchantName;
     public Button addButton;
-    public Button deleteButton;
     public TextField newMerchantName;
     public ChoiceBox<MerchantTypeDto> newMerchantTypeChoiceBox;
     @FXML
@@ -45,9 +42,9 @@ public class MerchantListController extends BaseController {
 
     List<MerchantTypeDto> dbMerchantTypesList;
 
-    public MerchantListController(SceneManager sceneManager, SettlementModel settlement, SettlementsData data) {
+    public MerchantListController(SceneManager sceneManager, SettlementModel settlement) {
         super(sceneManager);
-        this.settlementModel = data.getSettlements().stream().filter(settlement::equals).findAny().get();
+        this.settlementModel = settlement;
     }
 
     @FXML
@@ -66,7 +63,6 @@ public class MerchantListController extends BaseController {
         merchantsListView.setItems(settlementModel.getMerchants());
         merchantsListView.getSelectionModel().select(0);
 
-        //addButton.disableProperty().bind(merchantsListView.getSelectionModel().selectedItemProperty().isNull());
         merchantName.disableProperty().bind(merchantsListView.getSelectionModel().selectedItemProperty().isNull());
 
         merchantsListView.getSelectionModel()
@@ -91,7 +87,7 @@ public class MerchantListController extends BaseController {
             return;
         }
         merchantName.setText(newValue.getName());
-        MerchantTypeDto dto = dbMerchantTypesList.stream().filter(l -> l.getType().equals(newValue.getType())).findAny().get();
+        MerchantTypeDto dto = dbMerchantTypesList.stream().filter(l -> l.getType().equals(newValue.getType())).findAny().orElse(null);
         merchantTypeChoiceBox.getSelectionModel().select(dbMerchantTypesList.indexOf(dto));
     }
 

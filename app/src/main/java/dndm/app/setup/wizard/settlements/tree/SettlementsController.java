@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
@@ -25,7 +24,6 @@ import java.net.URL;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class SettlementsController extends BaseController {
@@ -48,8 +46,6 @@ public class SettlementsController extends BaseController {
     @FXML
     public VBox vbox;
     @FXML
-    Pane pane;
-    @FXML
     public SettlementTreeView<SettlementModel> settlementsTree;
     @FXML
     public HBox menuBar;
@@ -59,10 +55,22 @@ public class SettlementsController extends BaseController {
     ObservableList<TreeItem<SettlementModel>> settlementList;
     SettlementsData settlementData;
 
-    public SettlementsController(SceneManager sceneManager, SettlementsData data, Function<String,String> testStr) {
+    public SettlementsController(SceneManager sceneManager, SettlementsData data) {
         super(sceneManager);
         this.settlementData = data;
-        System.out.println(testStr.apply("test"));
+
+        Callback<Class<?>, Object> settlementListControllerFactory = param -> {
+            SettlementModel model = getSelectedSettlement();
+            return new MerchantListController(sceneManager, model);
+        };
+
+        DependencyInjection.addInjectionMethod(
+                MerchantListController.class, settlementListControllerFactory
+        );
+    }
+
+    private SettlementModel getSelectedSettlement() {
+        return settlementsTree.getSelectionModel().getSelectedItem().getValue();
     }
 
     @FXML
@@ -82,15 +90,7 @@ public class SettlementsController extends BaseController {
         editSettlementLabel.prefWidthProperty().bind(vbox.widthProperty());
 
 
-        Callback<Class<?>, Object> settlementListControllerFactory = param -> {
-            SettlementModel model = settlementsTree.getSelectionModel().getSelectedItem().getValue();
-            return new MerchantListController(sceneManager, model, settlementData);
-        };
 
-        //save the factory in the injector
-        DependencyInjection.addInjectionMethod(
-                MerchantListController.class, settlementListControllerFactory
-        );
     }
 
     @FXML
@@ -102,7 +102,6 @@ public class SettlementsController extends BaseController {
         settlementsTree.getSelectionModel().getSelectedItem().getChildren().add(treeItem);
         settlementsTree.refresh();
         settlementsTree.getSelectionModel().getSelectedItem().setExpanded(true);
-        settlementsTree.getSelectionModel().select(treeItem);
         settlementData.addSettlement(model);
     }
 
@@ -119,6 +118,7 @@ public class SettlementsController extends BaseController {
         settlementsTree.getSelectionModel().getSelectedItem().setValue(model);
         settlementsTree.refresh();
         settlementName.requestFocus();
+        updateAddSettlementForm(settlementsTree.getSelectionModel().getSelectedItem());
     }
 
     @FXML

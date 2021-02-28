@@ -19,7 +19,6 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.function.Function;
 
 public class App extends Application {
 
@@ -66,12 +65,8 @@ public class App extends Application {
                 Controller.class, initialScreenControllerFactory
         );
 
-
-
-
         Callback<Class<?>, Object> settlementTreeControllerFactory = param -> {
-            Function<String, String> data = (a) -> a.concat("_bla");
-            return new SettlementsController(sceneManager, settlementsData, data);
+            return new SettlementsController(sceneManager, settlementsData);
         };
 
         //save the factory in the injector

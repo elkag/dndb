@@ -33,7 +33,7 @@ public class MerchantListCellFactory extends ListCell<Merchant> {
                 setGraphic(newMerchantPane);
                 setOnMouseClicked(mouseClickedEvent -> {
                     if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
-                        sceneManager.updateScene(ViewsConfig.ITEMS_LIST);
+                        sceneManager.switchScene(this.getScene(), ViewsConfig.ITEMS_LIST);
                     }
                 });
             } catch (IOException e) {

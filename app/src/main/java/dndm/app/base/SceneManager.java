@@ -24,6 +24,7 @@ public class SceneManager {
 
     public void switchScene(final Scene oldScene, final ViewsConfig view) {
         Stage stage = (Stage) oldScene.getWindow();
+
         Scene scene = scenes.computeIfAbsent(view.getUrl(), u -> {
             try {
                 Parent root = DependencyInjection.getLoader(view.getUrl()).load();
@@ -33,7 +34,7 @@ public class SceneManager {
             }
         });
         stage.setScene(scene);
-
+        rootStage.centerOnScreen();
     }
 
     public void switchScene(final ViewsConfig view) {
@@ -46,6 +47,7 @@ public class SceneManager {
             }
         });
         rootStage.setScene(scene);
+        rootStage.centerOnScreen();
     }
 
     public void updateScene(final ViewsConfig view) {
@@ -68,6 +70,7 @@ public class SceneManager {
         }
         Scene scene = scenes.get(view.getUrl());
         rootStage.setScene(scene);
+        rootStage.centerOnScreen();
     }
 
 }

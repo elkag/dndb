@@ -33,7 +33,7 @@ public class Controller extends BaseController {
     }
 
     public void loadStartScreen() {
-        sceneManager.switchScene(spacer.getScene(), ViewsConfig.INITIAL_SCREEN);
+        sceneManager.switchScene(ViewsConfig.INITIAL_SCREEN);
     }
 
     public void openItemsWindow() {

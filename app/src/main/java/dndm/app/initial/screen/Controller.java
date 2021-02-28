@@ -3,13 +3,14 @@ package dndm.app.initial.screen;
 import dndm.app.base.BaseController;
 import dndm.app.base.SceneManager;
 import dndm.app.base.ViewsConfig;
+import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller extends BaseController {
-
-    public Controller(SceneManager sceneManager) {
+   public Controller(SceneManager sceneManager) {
         super(sceneManager);
     }
 
