@@ -27,8 +27,10 @@ public class Item {
     private Integer damageValue;
     @Column("itemrange")
     private Integer itemRange;
+
     @Column("armortype")
     private Integer armorType;
+
     @Column("armorvalue")
     private Integer armorValue;
     @Column("potiontype")
@@ -50,19 +52,19 @@ public class Item {
         this.name = name;
     }
 
-    public int getCost() {
+    public Integer getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
@@ -82,59 +84,59 @@ public class Item {
         this.description = description;
     }
 
-    public int getDamageType() {
+    public Integer getDamageType() {
         return damageType;
     }
 
-    public void setDamageType(int damageType) {
+    public void setDamageType(Integer damageType) {
         this.damageType = damageType;
     }
 
-    public int getDamageValue() {
+    public Integer getDamageValue() {
         return damageValue;
     }
 
-    public void setDamageValue(int damageValue) {
+    public void setDamageValue(Integer damageValue) {
         this.damageValue = damageValue;
     }
 
-    public int getItemRange() {
+    public Integer getItemRange() {
         return itemRange;
     }
 
-    public void setItemRange(int itemRange) {
+    public void setItemRange(Integer itemRange) {
         this.itemRange = itemRange;
     }
 
-    public int getArmorType() {
+    public Integer getArmorType() {
         return armorType;
     }
 
-    public void setArmorType(int armorType) {
+    public void setArmorType(Integer armorType) {
         this.armorType = armorType;
     }
 
-    public int getArmorValue() {
+    public Integer getArmorValue() {
         return armorValue;
     }
 
-    public void setArmorValue(int armorValue) {
+    public void setArmorValue(Integer armorValue) {
         this.armorValue = armorValue;
     }
 
-    public int getPotionType() {
+    public Integer getPotionType() {
         return potionType;
     }
 
-    public void setPotionType(int potionType) {
+    public void setPotionType(Integer potionType) {
         this.potionType = potionType;
     }
 
-    public int getPortionValue() {
+    public Integer getPortionValue() {
         return portionValue;
     }
 
-    public void setPortionValue(int portionValue) {
+    public void setPortionValue(Integer portionValue) {
         this.portionValue = portionValue;
     }
 

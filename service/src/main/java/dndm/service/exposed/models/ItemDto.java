@@ -3,17 +3,17 @@ package dndm.service.exposed.models;
 public class ItemDto {
 
     private String name;
-    private int cost;
-    private int weight;
+    private Integer cost;
+    private Integer weight;
     private ItemTypeDto itemType;
     private String description;
-    private int damageType;
-    private int damageValue;
-    private int itemRange;
-    private int armorType;
-    private int armorValue;
-    private int potionType;
-    private int portionValue;
+    private Integer damageType;
+    private Integer damageValue;
+    private Integer itemRange;
+    private Integer armorType;
+    private Integer armorValue;
+    private Integer potionType;
+    private Integer portionValue;
     private SettlementTypeDto settlementType;
     private MerchantTypeDto merchantType;
 
@@ -26,20 +26,20 @@ public class ItemDto {
         return this;
     }
 
-    public int getCost() {
+    public Integer getCost() {
         return cost;
     }
 
-    public ItemDto setCost(int cost) {
+    public ItemDto setCost(Integer cost) {
         this.cost = cost;
         return this;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public ItemDto setWeight(int weight) {
+    public ItemDto setWeight(Integer weight) {
         this.weight = weight;
         return this;
     }
@@ -62,65 +62,65 @@ public class ItemDto {
         return this;
     }
 
-    public int getDamageType() {
+    public Integer getDamageType() {
         return damageType;
     }
 
-    public ItemDto setDamageType(int damageType) {
+    public ItemDto setDamageType(Integer damageType) {
         this.damageType = damageType;
         return this;
     }
 
-    public int getDamageValue() {
+    public Integer getDamageValue() {
         return damageValue;
     }
 
-    public ItemDto setDamageValue(int damageValue) {
+    public ItemDto setDamageValue(Integer damageValue) {
         this.damageValue = damageValue;
         return this;
     }
 
-    public int getItemRange() {
+    public Integer getItemRange() {
         return itemRange;
     }
 
-    public ItemDto setItemRange(int itemRange) {
+    public ItemDto setItemRange(Integer itemRange) {
         this.itemRange = itemRange;
         return this;
     }
 
-    public int getArmorType() {
+    public Integer getArmorType() {
         return armorType;
     }
 
-    public ItemDto setArmorType(int armorType) {
+    public ItemDto setArmorType(Integer armorType) {
         this.armorType = armorType;
         return this;
     }
 
-    public int getArmorValue() {
+    public Integer getArmorValue() {
         return armorValue;
     }
 
-    public ItemDto setArmorValue(int armorValue) {
+    public ItemDto setArmorValue(Integer armorValue) {
         this.armorValue = armorValue;
         return this;
     }
 
-    public int getPotionType() {
+    public Integer getPotionType() {
         return potionType;
     }
 
-    public ItemDto setPotionType(int potionType) {
+    public ItemDto setPotionType(Integer potionType) {
         this.potionType = potionType;
         return this;
     }
 
-    public int getPortionValue() {
+    public Integer getPortionValue() {
         return portionValue;
     }
 
-    public ItemDto setPortionValue(int portionValue) {
+    public ItemDto setPortionValue(Integer portionValue) {
         this.portionValue = portionValue;
         return this;
     }

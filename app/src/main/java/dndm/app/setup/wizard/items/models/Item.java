@@ -7,21 +7,37 @@ import javafx.beans.property.*;
 
 public class Item {
 
-    private StringProperty name;
-    private IntegerProperty cost;
-    private IntegerProperty weight;
-    private ObjectProperty<ItemDto> itemType;
-    private StringProperty description;
-    private IntegerProperty damageType;
-    private IntegerProperty damageValue;
-    private IntegerProperty itemRange;
-    private IntegerProperty armorType;
-    private IntegerProperty armorValue;
-    private IntegerProperty potionType;
-    private IntegerProperty portionValue;
-    private ObjectProperty<SettlementTypeDto> settlementType;
-    private ObjectProperty<MerchantTypeDto> merchantType;
+    private final StringProperty name;
+    private final IntegerProperty cost;
+    private final IntegerProperty weight;
+    private final ObjectProperty<ItemDto> itemType;
+    private final StringProperty description;
+    private final IntegerProperty damageType;
+    private final IntegerProperty damageValue;
+    private final IntegerProperty itemRange;
+    private final IntegerProperty armorType;
+    private final IntegerProperty armorValue;
+    private final IntegerProperty potionType;
+    private final IntegerProperty portionValue;
+    private final ObjectProperty<SettlementTypeDto> settlementType;
+    private final ObjectProperty<MerchantTypeDto> merchantType;
 
+    public Item() {
+        name = new SimpleStringProperty();
+        cost = new SimpleIntegerProperty();
+        weight = new SimpleIntegerProperty();
+        itemType = new SimpleObjectProperty<>();
+        description = new SimpleStringProperty();
+        damageType = new SimpleIntegerProperty();
+        damageValue = new SimpleIntegerProperty();
+        itemRange = new SimpleIntegerProperty();
+        armorType = new SimpleIntegerProperty();
+        armorValue = new SimpleIntegerProperty();
+        potionType = new SimpleIntegerProperty();
+        portionValue = new SimpleIntegerProperty();
+        settlementType  = new SimpleObjectProperty<>();
+        merchantType  = new SimpleObjectProperty<>();
+    }
 
     public String getName() {
         return name.get();

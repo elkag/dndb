@@ -25,20 +25,54 @@ public class ItemMapper implements Mapper<Item, ItemDto> {
 
     @Override
     public ItemDto mapToModel(Item item) {
-        return new ItemDto()
-                .setArmorType(item.getArmorType())
-                .setArmorValue(item.getArmorValue())
-                .setCost(item.getCost())
-                .setDamageType(item.getDamageType())
-                .setDamageValue(item.getDamageValue())
-                .setDescription(item.getDescription())
-                .setItemRange(item.getItemRange())
-                .setItemType(ItemTypeMapper.Instance().mapToModel(item.getItemType()))
-                .setMerchantType(MerchantTypeMapper.Instance().mapToModel(item.getMerchantType()))
-                .setName(item.getName())
-                .setPortionValue(item.getPortionValue())
-                .setSettlementType(SettlementTypeMapper.Instance().mapToModel(item.getSettlementType()))
-                .setWeight(item.getWeight());
+        ItemDto itemDto = new ItemDto();
+        if(item.getArmorType() != null){
+            itemDto.setArmorType(item.getArmorType());
+        }
+        if(item.getArmorValue() != null){
+            itemDto.setArmorValue(item.getArmorValue());
+        }
+        if(item.getCost() != null){
+            itemDto.setCost(item.getCost());
+        }
+        if(item.getDamageType() != null){
+            itemDto.setDamageType(item.getDamageType());
+        }
+        if(item.getDamageValue() != null){
+            itemDto.setDamageValue(item.getDamageValue());
+        }
+        if(item.getDescription() != null){
+            itemDto.setDescription(item.getDescription());
+        }
+        if(item.getItemRange() != null){
+            itemDto.setItemRange(item.getItemRange());
+        }
+        if(item.getItemType() != null){
+            itemDto.setItemType(ItemTypeMapper.Instance().mapToModel(item.getItemType()));
+        }
+        if(item.getItemRange() != null){
+            itemDto.setItemRange(item.getItemRange());
+        }
+        if(item.getItemRange() != null){
+            itemDto.setMerchantType(MerchantTypeMapper.Instance().mapToModel(item.getMerchantType()));
+        }
+        if(item.getName() != null){
+            itemDto.setName(item.getName());
+        }
+        if(item.getPotionType() != null){
+            itemDto.setPotionType(item.getPotionType());
+        }
+        if(item.getPortionValue() != null){
+            itemDto.setPortionValue(item.getPortionValue());
+        }
+        if(item.getWeight() != null){
+            itemDto.setWeight(item.getWeight());
+        }
+        if(item.getSettlementType() != null){
+            itemDto.setSettlementType(SettlementTypeMapper.Instance().mapToModel(item.getSettlementType()));
+        }
+
+        return itemDto;
     }
 
     @Override
