@@ -19,11 +19,11 @@ import java.util.ResourceBundle;
 public class SettlementsListController extends BaseController {
 
     @FXML
-    public Label settlementName;
+    private Label settlementName;
     @FXML
-    public Label settlementType;
+    private Label settlementType;
     @FXML
-    public ListView<VBox> list;
+    private ListView<VBox> list;
 
     private final SettlementTreeView<SettlementModel> settlementsTree;
 

@@ -25,14 +25,19 @@ import java.util.ResourceBundle;
 public class MerchantListController extends BaseController {
 
     @FXML
-    public ListView<Merchant> merchantsListView;
+    private ListView<Merchant> merchantsListView;
 
     private final SettlementModel settlementModel;
-    public ChoiceBox<MerchantTypeDto> merchantTypeChoiceBox;
-    public TextField merchantName;
-    public Button addButton;
-    public TextField newMerchantName;
-    public ChoiceBox<MerchantTypeDto> newMerchantTypeChoiceBox;
+    @FXML
+    private ChoiceBox<MerchantTypeDto> merchantTypeChoiceBox;
+    @FXML
+    private TextField merchantName;
+    @FXML
+    private Button addButton;
+    @FXML
+    private TextField newMerchantName;
+    @FXML
+    private ChoiceBox<MerchantTypeDto> newMerchantTypeChoiceBox;
     @FXML
     private VBox vbox;
     @FXML

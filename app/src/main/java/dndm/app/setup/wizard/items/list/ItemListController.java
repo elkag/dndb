@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class ItemListController extends BaseController {
 
     @FXML
-    public ListView<Item> merchantsListView;
+    private ListView<Item> merchantsListView;
 
     @FXML
     private TableView<Item> itemsTable;

@@ -28,27 +28,27 @@ import java.util.stream.Collectors;
 
 public class SettlementsController extends BaseController {
     @FXML
-    public TextField settlementName;
+    private TextField settlementName;
     @FXML
-    public ChoiceBox<SettlementTypeDto> settlementSizeChoiceBox;
+    private ChoiceBox<SettlementTypeDto> settlementSizeChoiceBox;
     @FXML
-    public TextField newSettlementName;
+    private TextField newSettlementName;
     @FXML
-    public ChoiceBox<SettlementTypeDto> newSettlementSizeChoiceBox;
+    private ChoiceBox<SettlementTypeDto> newSettlementSizeChoiceBox;
     @FXML
-    public Button addBtn;
+    private Button addBtn;
     @FXML
-    public Button deleteBtn;
+    private Button deleteBtn;
     @FXML
-    public Label editSettlementLabel;
+    private Label editSettlementLabel;
     @FXML
-    public Label newSettlementLabel;
+    private Label newSettlementLabel;
     @FXML
-    public VBox vbox;
+    private VBox vbox;
     @FXML
-    public SettlementTreeView<SettlementModel> settlementsTree;
+    private SettlementTreeView<SettlementModel> settlementsTree;
     @FXML
-    public HBox menuBar;
+    private HBox menuBar;
 
     List<SettlementTypeDto> dbSettlementTypesList;
 
