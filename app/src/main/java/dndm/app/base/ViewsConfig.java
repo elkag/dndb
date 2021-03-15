@@ -8,8 +8,12 @@ public enum ViewsConfig {
     SETTLEMENTS_LIST("/dndm/campaign_setup_wizard_views/settlements/settlementsList.fxml", 1000, 800),
     MERCHANTS_LIST("/dndm/campaign_setup_wizard_views/merchants/merchantList.fxml", 1000, 800),
     MERCHANT_VIEW("/dndm/campaign_setup_wizard_views/merchants/merchant.fxml"),
-    ITEMS_LIST("/dndm/campaign_setup_wizard_views/items/itemsList.fxml", 1000, 800),
-    ADD_ITEMS("/dndm/setup/items/test.fxml", 800, 600);
+    ITEMS_LIST("/dndm/campaign_setup_wizard_views/items/addItemsView.fxml", 1000, 800),
+    ADD_ITEMS("/dndm/setup/items/createNewItemView.fxml", 800, 600),
+    ADD_ITEM_TYPE("/dndm/setup/items/createNewItemTypeView.fxml", 260, 100),
+    ADD_DAMAGE_TYPE("/dndm/setup/items/createNewDamageTypeView.fxml", 260, 100),
+    ADD_ARMOR_TYPE("/dndm/setup/items/createNewArmorTypeView.fxml", 260, 100),
+    ADD_POTION_TYPE("/dndm/setup/items/createNewPotionTypeView.fxml", 260, 100);
 
     private final String url;
     private double width;

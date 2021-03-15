@@ -1,22 +1,33 @@
 package dndm.service.exposed.models;
 
-public class ItemDto {
+import dndm.service.common.Dto;
 
+public class ItemDto implements Dto {
+
+    private Long id;
     private String name;
     private Integer cost;
     private Integer weight;
     private ItemTypeDto itemType;
     private String description;
-    private Integer damageType;
+    private DamageTypeDto damageType;
     private Integer damageValue;
     private Integer itemRange;
-    private Integer armorType;
+    private ArmorTypeDto armorType;
     private Integer armorValue;
-    private Integer potionType;
+    private PotionTypeDto potionType;
     private Integer portionValue;
     private SettlementTypeDto settlementType;
     private MerchantTypeDto merchantType;
 
+    public Long getId() {
+        return id;
+    }
+
+    public ItemDto setId(Long id) {
+        this.id = id;
+        return this;
+    }
     public String getName() {
         return name;
     }
@@ -62,11 +73,11 @@ public class ItemDto {
         return this;
     }
 
-    public Integer getDamageType() {
+    public DamageTypeDto getDamageType() {
         return damageType;
     }
 
-    public ItemDto setDamageType(Integer damageType) {
+    public ItemDto setDamageType(DamageTypeDto damageType) {
         this.damageType = damageType;
         return this;
     }
@@ -89,11 +100,11 @@ public class ItemDto {
         return this;
     }
 
-    public Integer getArmorType() {
+    public ArmorTypeDto getArmorType() {
         return armorType;
     }
 
-    public ItemDto setArmorType(Integer armorType) {
+    public ItemDto setArmorType(ArmorTypeDto armorType) {
         this.armorType = armorType;
         return this;
     }
@@ -107,11 +118,11 @@ public class ItemDto {
         return this;
     }
 
-    public Integer getPotionType() {
+    public PotionTypeDto getPotionType() {
         return potionType;
     }
 
-    public ItemDto setPotionType(Integer potionType) {
+    public ItemDto setPotionType(PotionTypeDto potionType) {
         this.potionType = potionType;
         return this;
     }

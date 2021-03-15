@@ -1,10 +1,20 @@
 package dndm.service.exposed.models;
 
-public class MerchantTypeDto {
+import dndm.service.common.Dto;
 
+public class MerchantTypeDto implements Dto {
+
+    private Long id;
     private String type;
     private String avatar;
+    public Long getId() {
+        return id;
+    }
 
+    public MerchantTypeDto setId(Long id) {
+        this.id = id;
+        return this;
+    }
     public String getType() {
         return this.type;
     }

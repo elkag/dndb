@@ -1,6 +1,5 @@
 package dndm.app.base;
 
-import dndm.app.setup.wizard.settlements.models.SettlementModel;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeView;
 

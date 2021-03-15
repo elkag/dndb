@@ -39,7 +39,7 @@ public class MerchantController extends BaseController {
 
     public void setModel(final Merchant merchant) {
         name.textProperty().bind(merchant.nameProperty());
-        type.textProperty().bind(merchant.typeProperty());
+//        type.textProperty().bind(merchant.typeProperty());
         maxItems.textProperty().bind(Bindings.convert(merchant.maxItemsProperty()));
         maxGold.textProperty().bind(Bindings.convert(merchant.maxGoldProperty()));
         pricemod.textProperty().bind(Bindings.convert(merchant.pricemodProperty()));

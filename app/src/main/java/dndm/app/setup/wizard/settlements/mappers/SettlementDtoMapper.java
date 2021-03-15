@@ -26,7 +26,7 @@ public class SettlementDtoMapper implements Mapper<SettlementTypeDto, Settlement
     @Override
     public SettlementModel mapToModel(SettlementTypeDto entity) {
         return new SettlementModel()
-                .setType(entity.getType())
+                .setType(entity)
                 .setSize(entity.getSize())
                 .setPopulationAsString(entity.getPopulationAsString())
                 .setImagePath(entity.getImage())
@@ -39,7 +39,7 @@ public class SettlementDtoMapper implements Mapper<SettlementTypeDto, Settlement
     @Override
     public SettlementModel mapToModel(SettlementTypeDto entity, SettlementModel model) {
         return model
-                .setType(entity.getType())
+                .setType(entity)
                 .setSize(entity.getSize())
                 .setPopulationAsString(entity.getPopulationAsString())
                 .setImagePath(entity.getImage())

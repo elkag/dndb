@@ -3,12 +3,13 @@ package dndm.app;
 import dndm.app.base.SceneManager;
 import dndm.app.base.ViewsConfig;
 import dndm.app.base.injection.DependencyInjection;
+import dndm.app.common.header.HeaderController;
 import dndm.app.initial.screen.Controller;
 import dndm.app.setup.wizard.data.SettlementsData;
 import dndm.app.setup.wizard.settlements.models.SettlementModel;
 import dndm.app.setup.wizard.settlements.tree.SettlementsController;
-import dndm.utilities.db.DataSource;
-import dndm.utilities.db.DataUtils;
+//import dndm.utilities.db.DataSource;
+//import dndm.utilities.db.DataUtils;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,12 +23,11 @@ import java.util.Set;
 
 public class App extends Application {
 
-    public static Set<SettlementModel> settlements = new HashSet<>();
-    public static Stage primaryStage;
+    //public static Set<SettlementModel> settlements = new HashSet<>();
 
     @Override
     public void init() throws Exception {
-        DataUtils.dbConnect();
+        //DataUtils.dbConnect();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        DataSource.close();
+        //DataSource.close();
         super.stop();
     }
 
@@ -57,30 +57,24 @@ public class App extends Application {
         //set bundle
         DependencyInjection.setBundle(ResourceBundle.getBundle("greetings", Locale.UK));
 
-        Callback<Class<?>, Object> initialScreenControllerFactory = param -> {
-            return new Controller(sceneManager);
-        };
+        Callback<Class<?>, Object> initialScreenControllerFactory = param -> new Controller(sceneManager);
         //save the factory in the injector
         DependencyInjection.addInjectionMethod(
                 Controller.class, initialScreenControllerFactory
         );
 
-        Callback<Class<?>, Object> settlementTreeControllerFactory = param -> {
-            return new SettlementsController(sceneManager, settlementsData);
-        };
+        Callback<Class<?>, Object> settlementTreeControllerFactory = param -> new SettlementsController(sceneManager, settlementsData);
 
         //save the factory in the injector
         DependencyInjection.addInjectionMethod(
                 SettlementsController.class, settlementTreeControllerFactory
         );
 
-        Callback<Class<?>, Object> headerControllerFactory = param -> {
-            return new dndm.app.common.header.Controller(sceneManager);
-        };
+        Callback<Class<?>, Object> headerControllerFactory = param -> new HeaderController(sceneManager);
 
         //save the factory in the injector
         DependencyInjection.addInjectionMethod(
-                dndm.app.common.header.Controller.class, headerControllerFactory
+                HeaderController.class, headerControllerFactory
         );
 
 

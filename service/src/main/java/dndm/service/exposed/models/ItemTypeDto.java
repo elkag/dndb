@@ -1,8 +1,21 @@
 package dndm.service.exposed.models;
 
-public class ItemTypeDto {
+import dndm.service.common.Dto;
+
+public class ItemTypeDto implements Dto {
+
+    private Long id;
     private String type;
     private String image;
+
+    public Long getId() {
+        return id;
+    }
+
+    public ItemTypeDto setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getImage() {
         return image;

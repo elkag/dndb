@@ -1,8 +1,6 @@
 package dndm.app.setup.wizard.items.models;
 
-import dndm.service.exposed.models.ItemDto;
-import dndm.service.exposed.models.MerchantTypeDto;
-import dndm.service.exposed.models.SettlementTypeDto;
+import dndm.service.exposed.models.*;
 import javafx.beans.property.*;
 
 public class Item {
@@ -10,14 +8,14 @@ public class Item {
     private final StringProperty name;
     private final IntegerProperty cost;
     private final IntegerProperty weight;
-    private final ObjectProperty<ItemDto> itemType;
+    private final ObjectProperty<ItemTypeDto> itemType;
     private final StringProperty description;
-    private final IntegerProperty damageType;
+    private final ObjectProperty<DamageTypeDto> damageType;
     private final IntegerProperty damageValue;
     private final IntegerProperty itemRange;
-    private final IntegerProperty armorType;
+    private final ObjectProperty<ArmorTypeDto> armorType;
     private final IntegerProperty armorValue;
-    private final IntegerProperty potionType;
+    private final ObjectProperty<PotionTypeDto> potionType;
     private final IntegerProperty portionValue;
     private final ObjectProperty<SettlementTypeDto> settlementType;
     private final ObjectProperty<MerchantTypeDto> merchantType;
@@ -28,12 +26,12 @@ public class Item {
         weight = new SimpleIntegerProperty();
         itemType = new SimpleObjectProperty<>();
         description = new SimpleStringProperty();
-        damageType = new SimpleIntegerProperty();
+        damageType = new SimpleObjectProperty<>();
         damageValue = new SimpleIntegerProperty();
         itemRange = new SimpleIntegerProperty();
-        armorType = new SimpleIntegerProperty();
+        armorType = new SimpleObjectProperty<>();
         armorValue = new SimpleIntegerProperty();
-        potionType = new SimpleIntegerProperty();
+        potionType = new SimpleObjectProperty<>();
         portionValue = new SimpleIntegerProperty();
         settlementType  = new SimpleObjectProperty<>();
         merchantType  = new SimpleObjectProperty<>();
@@ -75,15 +73,15 @@ public class Item {
         this.weight.set(weight);
     }
 
-    public ItemDto getItemType() {
+    public ItemTypeDto getItemType() {
         return itemType.get();
     }
 
-    public ObjectProperty<ItemDto> itemTypeProperty() {
+    public ObjectProperty<ItemTypeDto> itemTypeProperty() {
         return itemType;
     }
 
-    public void setItemType(ItemDto itemType) {
+    public void setItemType(ItemTypeDto itemType) {
         this.itemType.set(itemType);
     }
 
@@ -99,15 +97,15 @@ public class Item {
         this.description.set(description);
     }
 
-    public int getDamageType() {
+    public DamageTypeDto getDamageType() {
         return damageType.get();
     }
 
-    public IntegerProperty damageTypeProperty() {
+    public ObjectProperty<DamageTypeDto> damageTypeProperty() {
         return damageType;
     }
 
-    public void setDamageType(int damageType) {
+    public void setDamageType(DamageTypeDto damageType) {
         this.damageType.set(damageType);
     }
 
@@ -135,15 +133,15 @@ public class Item {
         this.itemRange.set(itemRange);
     }
 
-    public int getArmorType() {
+    public ArmorTypeDto getArmorType() {
         return armorType.get();
     }
 
-    public IntegerProperty armorTypeProperty() {
+    public ObjectProperty<ArmorTypeDto> armorTypeProperty() {
         return armorType;
     }
 
-    public void setArmorType(int armorType) {
+    public void setArmorType(ArmorTypeDto armorType) {
         this.armorType.set(armorType);
     }
 
@@ -159,15 +157,15 @@ public class Item {
         this.armorValue.set(armorValue);
     }
 
-    public int getPotionType() {
+    public PotionTypeDto getPotionType() {
         return potionType.get();
     }
 
-    public IntegerProperty potionTypeProperty() {
+    public ObjectProperty<PotionTypeDto> potionTypeProperty() {
         return potionType;
     }
 
-    public void setPotionType(int potionType) {
+    public void setPotionType(PotionTypeDto potionType) {
         this.potionType.set(potionType);
     }
 

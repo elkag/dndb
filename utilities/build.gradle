@@ -6,11 +6,15 @@ plugins {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/com.codahale.metrics/metrics-core
-    compile group: 'com.codahale.metrics', name: 'metrics-core', version: '3.0.1'
-    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.0'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.29'
-    compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.29.Final'
+    implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0.1'
+
+    annotationProcessor "com.sun.xml.bind:jaxb-core:2.3.0.1"
+
+    testAnnotationProcessor "com.sun.xml.bind:jaxb-core:2.3.0.1"
 }
 
 java {

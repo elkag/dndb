@@ -27,10 +27,57 @@ create table if not exists merchant_types(
 
 create table if not exists item_types(
     id              bigint not null auto_Increment,
-    name            varchar(45) not null,
-    image           varchar(45) not null,
+    type            varchar(45) not null,
+    image           varchar(45) null,
     constraint pk_itemtype primary key (id)
 );
+
+create table if not exists armor_types(
+    id          int not null auto_Increment,
+    type        varchar(45) not null
+);
+
+delete from armor_types;
+
+insert into armor_types
+    (type)
+values
+    ( 'Light Armor' ),
+    ( 'Medium Armor' ),
+    ( 'Heavy Armor' );
+
+create table if not exists damage_types(
+    id          int not null auto_Increment,
+    type        varchar(45) not null
+);
+
+delete from damage_types;
+
+insert into damage_types
+    (type)
+values
+    ( 'Slashing' ),
+    ( 'Blud Geoning' ),
+    ( 'Pearcing' ),
+    ( 'Force' ),
+    ( 'Fire' ),
+    ( 'Cold' ),
+    ( 'Lightning' ),
+    ( 'Thunder' ),
+    ( 'Poison' );
+
+create table if not exists potion_types(
+    id          int not null auto_Increment,
+    type        varchar(45) not null
+);
+
+delete from potion_types;
+
+insert into potion_types
+    (type)
+values
+    ( 'Good' ),
+    ( 'Bad' );
 
 create table if not exists items(
     id              bigint not null auto_Increment,
@@ -50,7 +97,10 @@ create table if not exists items(
     merchanttype    bigint not null,
     constraint pk_items primary key (id),
     constraint fk_merchanttype foreign key (merchanttype) references merchant_types(id) on delete cascade on update cascade,
-    constraint fk_itemtype foreign key (itemtype) references item_types(id) on delete cascade on update cascade
+    constraint fk_itemtype foreign key (itemtype) references item_types(id) on delete cascade on update cascade,
+    constraint fk_armortype foreign key (armortype) references armor_types(id) on delete cascade on update cascade,
+    constraint fk_damagetype foreign key (damagetype) references damage_types(id) on delete cascade on update cascade,
+    constraint fk_potiontype foreign key (potiontype) references potion_types(id) on delete cascade on update cascade
 );
 
 create table if not exists settlement_types(
@@ -100,12 +150,12 @@ values
 delete from item_types;
 
 insert into item_types
-    (name, image)
+    (type, image)
 values
-    ( 'weapon', 'weapon.png' ),
-    ( 'food', 'food.png' ),
-    ( 'resource', 'resource.png' ),
-    ( 'service', 'service' );
+    ( 'Weapon', 'weapon.png' ),
+    ( 'Food', 'food.png' ),
+    ( 'Resource', 'resource.png' ),
+    ( 'Service', 'service.png' );
 
 
 insert into items
@@ -124,22 +174,22 @@ insert into items
     settlementsize,
     merchanttype )
 values
-    ( 'pistol', 1000, 2000, (select id from item_types where name='weapon'), 'cool and accurate', null, null, null, null, null, null, null, (select id from settlement_types where type='Capital'), (select id from merchant_types where type='Hammersmith') ),
-    ( 'ax', 500, 1000, (select id from item_types where name='food'), 'sharp, sharp and sharp ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Hammersmith') ),
-    ( 'pasta', 100, 300, (select id from item_types where name='food'), 'tasty ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Pastry Cooker') ),
-    ( 'pasta', 100, 300, (select id from item_types where name='food'), 'tasty ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Baker') ),
-    ( 'bread', 50, 500, (select id from item_types where name='food'), 'satisfying ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Pastry Cooker') ),
-    ( 'bread', 50, 500, (select id from item_types where name='food'), 'satisfying ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Baker') ),
-    ( 'cartridges', 500, 500, (select id from item_types where name='resource'), 'sharp ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Hammersmith') ),
-    ( 'cartridges', 500, 500, (select id from item_types where name='resource'), 'sharp ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Hammersmith') ),
-    ( 'bricks', 500, 0, (select id from item_types where name='resource'), 'the strongest bricks ever', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Hammersmith') ),
-    ( 'bricks', 500, 0, (select id from item_types where name='resource'), 'the cheapest bricks ever', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Baker') ),
-    ( 'bricks', 500, 0, (select id from item_types where name='resource'), 'I can''t make bricks, but I''ll come up with something', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Butcher') ),
-    ( 'bricks', 500, 0, (select id from item_types where name='resource'), 'just breaks', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Pastry Cooker') ),
-    ( 'bricks', 500, 0, (select id from item_types where name='resource'), 'just breaks ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Butcher') ),
-    ( 'bricks', 500, 0, (select id from item_types where name='resource'), 'just breaks ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Goldsmith') ),
-    ( 'bricks', 500, 0, (select id from item_types where name='resource'), 'just breaks ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Butcher') ),
-    ( 'armor repair', 500, 0, (select id from item_types where name='service'), 'Not fast, but perfect ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Stock Breeder') ),
-    ( 'laundry', 500, 0, (select id from item_types where name='food'), 'I wash everything in no time', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Stock Breeder') ) ;
+    ( 'pistol', 1000, 2000, (select id from item_types where lower(type)='weapon'), 'cool and accurate', null, null, null, null, null, null, null, (select id from settlement_types where type='Capital'), (select id from merchant_types where type='Hammersmith') ),
+    ( 'ax', 500, 1000, (select id from item_types where lower(type)='food'), 'sharp, sharp and sharp ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Hammersmith') ),
+    ( 'pasta', 100, 300, (select id from item_types where lower(type)='food'), 'tasty ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Pastry Cooker') ),
+    ( 'pasta', 100, 300, (select id from item_types where lower(type)='food'), 'tasty ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Baker') ),
+    ( 'bread', 50, 500, (select id from item_types where lower(type)='food'), 'satisfying ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Pastry Cooker') ),
+    ( 'bread', 50, 500, (select id from item_types where lower(type)='food'), 'satisfying ...', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Baker') ),
+    ( 'cartridges', 500, 500, (select id from item_types where lower(type)='resource'), 'sharp ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Hammersmith') ),
+    ( 'cartridges', 500, 500, (select id from item_types where lower(type)='resource'), 'sharp ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Hammersmith') ),
+    ( 'bricks', 500, 0, (select id from item_types where lower(type)='resource'), 'the strongest bricks ever', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Hammersmith') ),
+    ( 'bricks', 500, 0, (select id from item_types where lower(type)='resource'), 'the cheapest bricks ever', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Baker') ),
+    ( 'bricks', 500, 0, (select id from item_types where lower(type)='resource'), 'I can''t make bricks, but I''ll come up with something', null, null, null, null, null, null, null, (select id from settlement_types where type='Small City Town'), (select id from merchant_types where type='Butcher') ),
+    ( 'bricks', 500, 0, (select id from item_types where lower(type)='resource'), 'just breaks', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Pastry Cooker') ),
+    ( 'bricks', 500, 0, (select id from item_types where lower(type)='resource'), 'just breaks ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Butcher') ),
+    ( 'bricks', 500, 0, (select id from item_types where lower(type)='resource'), 'just breaks ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Goldsmith') ),
+    ( 'bricks', 500, 0, (select id from item_types where lower(type)='resource'), 'just breaks ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Butcher') ),
+    ( 'armor repair', 500, 0, (select id from item_types where lower(type)='service'), 'Not fast, but perfect ..', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Stock Breeder') ),
+    ( 'laundry', 500, 0, (select id from item_types where lower(type)='food'), 'I wash everything in no time', null, null, null, null, null, null, null, (select id from settlement_types where type='Village'), (select id from merchant_types where type='Stock Breeder') ) ;
 
 commit;

@@ -3,7 +3,9 @@ import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 plugins {
     id 'java'
     id 'dndm.java-application-conventions'
+    //id 'dndm.java-library-conventions'
 }
+
 
 def currentOS = DefaultNativePlatform.currentOperatingSystem
 def platform
@@ -19,14 +21,13 @@ java {
 }
 
 dependencies {
+    //api group: 'org.slf4j', name: 'slf4j-api', version: '1.7.29'
     implementation 'org.apache.commons:commons-text'
-
     implementation "org.openjfx:javafx-base:15.0.1:${platform}"
     implementation "org.openjfx:javafx-controls:15.0.1:${platform}"
     implementation "org.openjfx:javafx-graphics:15.0.1:${platform}"
     implementation "org.openjfx:javafx-fxml:15.0.1:${platform}"
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
+
 
     implementation project(':service')
 }

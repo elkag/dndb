@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dndm.app.common.header.CreateNewItemController">
+    <TextArea fx:id="itemDescription" layoutX="391.0" layoutY="257.0" prefHeight="247.0" prefWidth="375.0" />
+    <Label layoutX="392.0" layoutY="22.0" prefHeight="17.0" prefWidth="159.0" text="Description">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+    <HBox layoutX="42.0" layoutY="61.0" spacing="10.0">
+        <VBox alignment="TOP_RIGHT" spacing="18.0">
+            <Label text="Item Type" />
+            <Label text="Item Name" />
+            <Label text="Merchant Type" />
+            <Label text="Settlement Type" />
+            <Label text="Item Range" />
+            <Label text="Item Cost" />
+            <Label text="Item Weight" />
+            <Label text="Damage Type" />
+            <Label text="Damage Value" />
+            <Label text="Armor Type" />
+            <Label text="Armor Value" />
+            <Label text="Portion Type" />
+            <Label text="Portion Value" />
+           <padding>
+               <Insets top="4.0" />
+           </padding>
+        </VBox>
+        <VBox spacing="10.0">
+            <ChoiceBox fx:id="itemType" prefWidth="150.0" />
+            <TextField fx:id="itemName" />
+            <ChoiceBox fx:id="merchantType" prefWidth="150.0" />
+            <ChoiceBox fx:id="settlementType" prefWidth="150.0" />
+            <TextField fx:id="itemRange" />
+            <TextField fx:id="itemCost" />
+            <TextField fx:id="itemWeight" />
+            <ChoiceBox fx:id="damageType" prefWidth="150.0" />
+            <TextField fx:id="damageValue" />
+            <ChoiceBox fx:id="armorType" prefWidth="150.0" />
+            <TextField fx:id="armorValue" />
+            <ChoiceBox fx:id="potionType" prefWidth="150.0" />
+            <TextField fx:id="potionValue" />
+        </VBox>
+        <VBox prefHeight="445.0" prefWidth="25.0" spacing="10.0">
+          <Button mnemonicParsing="false" onAction="#handleAddNewItemType" text="+" />
+          <Region prefHeight="201.0" prefWidth="200.0" />
+          <Button mnemonicParsing="false" onAction="#handleAddNewDamageType" text="+" />
+          <Region prefHeight="25.0" prefWidth="10.0" />
+          <Button mnemonicParsing="false" onAction="#handleAddNewArmorType" text="+" />
+          <Region prefHeight="25.0" prefWidth="200.0" />
+          <Button mnemonicParsing="false" onAction="#handleAddNewPotionType" text="+" />
+        </VBox>
+    </HBox>
+   <Label layoutX="68.0" layoutY="22.0" text="Details">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+   <Line endX="629.0" layoutX="155.0" layoutY="43.0" startX="-100.0" strokeWidth="0.5" />
+   <Button fx:id="saveButton" layoutX="640.0" layoutY="532.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="43.0" prefWidth="128.0" text="Save" />
+</AnchorPane>

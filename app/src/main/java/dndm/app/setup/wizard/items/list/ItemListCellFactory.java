@@ -2,7 +2,7 @@ package dndm.app.setup.wizard.items.list;
 
 import dndm.app.base.ViewsConfig;
 import dndm.app.base.injection.DependencyInjection;
-import dndm.app.setup.wizard.items.item.ItemController;
+import dndm.app.setup.wizard.items.controllers.ItemController;
 import dndm.app.setup.wizard.items.models.Item;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;

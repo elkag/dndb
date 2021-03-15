@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox fx:id="hbox" prefWidth="800.0" styleClass="header" stylesheets="@styles/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dndm.app.common.header.Controller">
+<HBox fx:id="hbox" prefWidth="800.0" styleClass="header" stylesheets="@styles/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dndm.app.common.header.HeaderController">
     <MenuBar minHeight="28.0" stylesheets="@styles/styles.css" HBox.hgrow="ALWAYS">
         <menus>
             <Menu mnemonicParsing="false" text="Home">

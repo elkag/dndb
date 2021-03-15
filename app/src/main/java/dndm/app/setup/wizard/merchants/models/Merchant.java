@@ -1,10 +1,8 @@
 package dndm.app.setup.wizard.merchants.models;
 
 import dndm.app.setup.wizard.settlements.models.SettlementModel;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import dndm.service.exposed.models.MerchantTypeDto;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -16,7 +14,7 @@ import java.util.Objects;
 public class Merchant {
     private StringProperty name;
     private SettlementModel settlement;
-    private StringProperty type = new SimpleStringProperty();
+    private ObjectProperty<MerchantTypeDto> type = new SimpleObjectProperty<>();
     private IntegerProperty pricemod = new SimpleIntegerProperty();
     private IntegerProperty gold = new SimpleIntegerProperty();
     private IntegerProperty maxItems = new SimpleIntegerProperty();
@@ -26,8 +24,7 @@ public class Merchant {
     private Image avatar;
     private File imagePath;
 
-
-    public StringProperty typeProperty() {
+    public ObjectProperty<MerchantTypeDto> typeProperty() {
         return type;
     }
 
@@ -129,7 +126,7 @@ public class Merchant {
      *
      * @return type
      */
-    public String getType() {
+    public MerchantTypeDto getType() {
         return this.type.get();
     }
 
@@ -138,8 +135,8 @@ public class Merchant {
      *
      * @param type
      */
-    public void setType(String type) {
-        this.type = new SimpleStringProperty(type);
+    public void setType(MerchantTypeDto type) {
+        this.type = new SimpleObjectProperty<>(type);
     }
 
     /**

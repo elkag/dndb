@@ -1,6 +1,7 @@
 package dndm.app.setup.wizard.settlements.models;
 
 import dndm.app.setup.wizard.merchants.models.Merchant;
+import dndm.service.exposed.models.SettlementTypeDto;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,7 +18,7 @@ public class SettlementModel implements Serializable {
     private StringProperty name;
     private IntegerProperty size;
 
-    private String type;
+    private SettlementTypeDto type;
     private File imagePath;
     private Image image;
     private Integer population;
@@ -62,11 +63,11 @@ public class SettlementModel implements Serializable {
         return this;
     }
 
-    public String getType() {
-        return type;
+    public SettlementTypeDto getType() {
+        return this.type;
     }
 
-    public SettlementModel setType(String type) {
+    public SettlementModel setType(SettlementTypeDto type) {
         this.type = type;
         return this;
     }

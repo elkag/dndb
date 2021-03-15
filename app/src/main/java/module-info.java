@@ -4,7 +4,7 @@ module dndm.app {
     requires javafx.controls;
     requires javafx.fxml;
 
-    requires dndm.utilities;
+    //requires org.slf4j;
     requires dndm.service;
 
     opens dndm.app to javafx.fxml;
@@ -14,6 +14,7 @@ module dndm.app {
     opens dndm.app.setup.wizard.settlements.list to javafx.fxml;
     opens dndm.app.setup.wizard.merchants.list to javafx.fxml;
     opens dndm.app.setup.wizard.items.list to javafx.fxml;
+    opens dndm.app.setup.wizard.items.controllers to javafx.fxml;
 
     exports dndm.app;
     exports dndm.app.base;
@@ -27,6 +28,6 @@ module dndm.app {
     exports dndm.app.setup.wizard.merchants.merchant;
     exports dndm.app.setup.wizard.merchants.models;
     exports dndm.app.setup.wizard.items.list;
-    exports dndm.app.setup.wizard.items.item;
+    exports dndm.app.setup.wizard.items.controllers;
     exports dndm.app.setup.wizard.items.models;
 }

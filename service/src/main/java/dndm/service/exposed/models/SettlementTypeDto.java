@@ -1,6 +1,10 @@
 package dndm.service.exposed.models;
 
-public class SettlementTypeDto {
+import dndm.service.common.Dto;
+
+public class SettlementTypeDto implements Dto {
+
+    private Long id;
     private String type;
     private Integer size;
     private Integer population;
@@ -10,6 +14,14 @@ public class SettlementTypeDto {
     private Integer maxitems;
     private Integer maxgold;
 
+    public Long getId() {
+        return id;
+    }
+
+    public SettlementTypeDto setId(Long id) {
+        this.id = id;
+        return this;
+    }
     public String getType() {
         return type;
     }

@@ -76,7 +76,7 @@ public class SettlementsController extends BaseController {
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dbSettlementTypesList = SettlementServiceProvider.settlementService().get();
+        dbSettlementTypesList = SettlementServiceProvider.settlementTypeService().getAll();
 
         SettlementModel capitalModel = SettlementDtoMapper.getInstance().mapToModel(dbSettlementTypesList.get(0));
         capitalModel.setName("Capital");

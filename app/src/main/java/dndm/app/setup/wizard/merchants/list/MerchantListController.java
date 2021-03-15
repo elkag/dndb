@@ -4,6 +4,7 @@ import dndm.app.base.BaseController;
 import dndm.app.base.SceneManager;
 import dndm.app.base.ViewsConfig;
 import dndm.app.base.injection.DependencyInjection;
+import dndm.app.setup.wizard.items.controllers.AddItemsController;
 import dndm.app.setup.wizard.merchants.merchant.MerchantController;
 import dndm.app.setup.wizard.merchants.models.Merchant;
 import dndm.app.setup.wizard.settlements.models.SettlementModel;
@@ -50,13 +51,26 @@ public class MerchantListController extends BaseController {
     public MerchantListController(SceneManager sceneManager, SettlementModel settlement) {
         super(sceneManager);
         this.settlementModel = settlement;
+
+        Callback<Class<?>, Object> itemListControllerFactory = param -> {
+            Merchant model = getMerchant();
+            return new AddItemsController(sceneManager, model);
+        };
+
+        DependencyInjection.addInjectionMethod(
+                AddItemsController.class, itemListControllerFactory
+        );
+    }
+
+    private Merchant getMerchant() {
+        return merchantsListView.getSelectionModel().getSelectedItem();
     }
 
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        dbMerchantTypesList = MerchantServiceProvider.merchantService().get();
+        dbMerchantTypesList = MerchantServiceProvider.merchantService().getAll();
 
         merchantTypeChoiceBox.getItems().addAll(dbMerchantTypesList);
         merchantTypeChoiceBox.getSelectionModel().select(0);
@@ -113,7 +127,7 @@ public class MerchantListController extends BaseController {
         model.setName(newMerchantName.getText());
 
         final MerchantTypeDto dto = newMerchantTypeChoiceBox.getSelectionModel().getSelectedItem();
-        model.setType(dto.getType());
+        model.setType(dto);
         model.setImagePath(dto.getAvatar());
         model.setMaxGold(settlementModel.getMaxgold());
         model.setMaxItems(settlementModel.getMaxitems());
@@ -129,7 +143,7 @@ public class MerchantListController extends BaseController {
             return;
         }
         merchant.setName(merchantName.getText());
-        merchant.setType(merchantTypeChoiceBox.getSelectionModel().getSelectedItem().getType());
+        merchant.setType(merchantTypeChoiceBox.getSelectionModel().getSelectedItem());
         merchant.setImagePath(merchantTypeChoiceBox.getSelectionModel().getSelectedItem().getAvatar());
         merchantsListView.refresh();
     }
